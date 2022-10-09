@@ -2,7 +2,7 @@
 
 <img width="60" alt="iOS" src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white"> <img width="70" alt="iOS" src="https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white">
 
-This library provee all the necessary logic to make a request to any API from your application. This is an implementation usinf ``async`` and ``await``
+This library provee all the necessary logic to make a request to any API from your application. This is an implementation using ``async`` and ``await``
 
 ##  Installation
 
