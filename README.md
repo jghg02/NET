@@ -10,7 +10,7 @@ This library provee all the necessary logic to make a request to any API from yo
 
 ##  Installation
 
-Add JNetwork Client as a dependency through Xcode or directly to Package.swift:
+Add NET Client as a dependency through Xcode or directly to Package.swift:
 
 ```
 .package(url: "https://github.com/jghg02/NET", branch: "main")
