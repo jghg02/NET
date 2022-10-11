@@ -4,6 +4,10 @@
 
 This library provee all the necessary logic to make a request to any API from your application. This is an implementation using ``async`` and ``await``
 
+## Requeriments
+- `iOS >= 14`
+- `macOS >= 10.15`
+
 ##  Installation
 
 Add JNetwork Client as a dependency through Xcode or directly to Package.swift:
