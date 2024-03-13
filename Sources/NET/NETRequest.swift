@@ -9,7 +9,7 @@ import Foundation
 
 public class NETRequest {
     public typealias NETHeaders = [String: String]
-    
+
     public init(url: URL, method: NETMethod = .GET, headers: NETHeaders = [:]) {
         self.url = url
         self.method = method

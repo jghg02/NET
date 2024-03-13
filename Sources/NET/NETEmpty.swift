@@ -8,4 +8,3 @@
 import Foundation
 
 public struct NETEmpty: Decodable, LocalizedError, Equatable {}
-

@@ -13,26 +13,26 @@ class NETBodyRequestTest: XCTestCase {
     func test_init_encodedBody() throws {
         let request = NETBodyRequest(url: URL.test, body: TestObject())
         let urlRequest = request.asURLRequest
-        
+
         let data = try XCTUnwrap(urlRequest.httpBody)
         let object = try? JSONDecoder.convertingKeysFromSnakeCase.decode(TestObject.self, from: data)
         XCTAssertEqual(object, TestObject())
     }
-    
+
     func test_init_ContentTypeHeaderJSON() {
         let request = NETBodyRequest(url: URL.test, body: TestObject())
         let urlRequest = request.asURLRequest
-        
+
         XCTAssertEqual(urlRequest.value(forHTTPHeaderField: "Content-Type"), "application/json")
     }
-    
+
     func test_headers() {
         let request = NETBodyRequest(url: URL.test, body: TestObject())
         let urlRequest = request.asURLRequest
-        
+
         XCTAssertNotNil(urlRequest.allHTTPHeaderFields)
     }
-    
+
     func test_setsHeaderFields() {
         let request = NETBodyRequest(
             url: URL.test,
@@ -44,30 +44,28 @@ class NETBodyRequestTest: XCTestCase {
         XCTAssertEqual(urlRequest.value(forHTTPHeaderField: "VALUE"), "THE-custom-value---")
         XCTAssertEqual(urlRequest.value(forHTTPHeaderField: "Content-Type"), "application/json")
     }
-    
+
     func test_useSnakeCase() throws {
         NETConfig.keyEncodingStrategy = .convertToSnakeCase
         let request = NETBodyRequest(url: URL.test, body: TestObject())
         let urlRequest = request.asURLRequest
         let data = try XCTUnwrap(urlRequest.httpBody)
         let json = try XCTUnwrap(JSONSerialization.jsonObject(with: data, options: []) as? [String: String])
-        
+
         XCTAssertEqual(json["last_name"], "Hernandez")
     }
-    
+
     func test_useDefaultEncoding() throws {
         NETConfig.keyEncodingStrategy = .useDefaultKeys
         let request = NETBodyRequest(url: URL.test, body: TestObject())
         let urlRequest = request.asURLRequest
         let data = try XCTUnwrap(urlRequest.httpBody)
         let json = try XCTUnwrap(JSONSerialization.jsonObject(with: data, options: []) as? [String: String])
-        
+
         XCTAssertEqual(json["lastName"], "Hernandez")
     }
 
-
 }
-
 
 // MARK: - Helpers
 

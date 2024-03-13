@@ -12,14 +12,14 @@ public class NETBodyRequest<N: Encodable>: NETRequest {
         self.body = body
         super.init(url: url, method: method, headers: headers)
     }
-    
+
     override func addToRequest(_ request: inout URLRequest) {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = NETConfig.keyEncodingStrategy
         request.httpBody = try? encoder.encode(body)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     }
-    
+
     private let body: N
-    
+
 }
