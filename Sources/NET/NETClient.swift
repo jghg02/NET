@@ -11,11 +11,12 @@ public typealias NETClientResult<N, E> = Result<NETResponse<N>, NETHTTPError<E>>
     where N: Decodable, E: LocalizedError & Decodable & Equatable
 
 /// This is the struct to implement the request
+@available(iOS 15.0, *)
 public struct NETClient<N, E> where N: Decodable, E: LocalizedError & Decodable & Equatable {
-    
+
     /// client a session
     private let requestLoader: NETRequestLoader
-    
+
     /// Init method to inject any implementation of the RequestLoader protocol
     /// - Parameter requestLoader: This is the conforming RequestLoader protocol cobject as the default parameter will instantiate an URLSession
     public init(requestLoader: NETRequestLoader = NETConfig.requestLoader) {
@@ -69,15 +70,14 @@ public struct NETClient<N, E> where N: Decodable, E: LocalizedError & Decodable 
             return .failure(.invalidResponse(statusCode))
         }
     }
-    
+
     /// Method to parser the data from services
     /// - Parameter data: Data
     /// - Returns: Struc/Class with al information decoded
     private func parse<N: Decodable>(_ data: Data?) -> N? {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = NETConfig.keyDecodingStrategy
         return try? decoder.decode(N.self, from: data)
     }
 }
-

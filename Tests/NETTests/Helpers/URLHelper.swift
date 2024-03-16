@@ -8,6 +8,7 @@
 import Foundation
 
 extension URL {
+    // swiftlint:disable force_unwrapping
     static var test = Self(string: "https://jghg02.com")!
 }
 
@@ -19,4 +20,3 @@ extension URLRequest {
         timeoutInterval: 42.0
     )
 }
-
