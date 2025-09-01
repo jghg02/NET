@@ -6,6 +6,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 public class NETBodyRequest<N: Encodable>: NETRequest {
     public init(url: URL, method: NETMethod  = .GET, body: N, headers: NETHeaders = [:]) {
