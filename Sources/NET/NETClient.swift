@@ -6,6 +6,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 public typealias NETClientResult<N, E> = Result<NETResponse<N>, NETHTTPError<E>>
     where N: Decodable, E: LocalizedError & Decodable & Equatable

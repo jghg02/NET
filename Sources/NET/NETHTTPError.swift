@@ -6,6 +6,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 public enum NETHTTPError<N: LocalizedError>: LocalizedError {
     case failedRequest(URLError?)

@@ -7,6 +7,10 @@
 
 @testable import NET
 import XCTest
+import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 class NETClientTest: XCTestCase {
 
